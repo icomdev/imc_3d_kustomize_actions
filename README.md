@@ -1,1 +1,1 @@
-# kustomize_actions
+# Kustomize GitHub Actions

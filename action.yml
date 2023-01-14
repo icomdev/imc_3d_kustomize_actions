@@ -1,0 +1,28 @@
+name: "Kustomize actions for GitHub workflows"
+description: "Kustomize actions Kubernetes deployments"
+inputs:
+  install:
+   description: "Kustomize installation requirement"
+   required: true
+  bot-name: 
+    description: "GitHub Auto Commit Name"
+    required: false
+  path:
+    description: "Kustomize folder path"
+    required: false
+  image:
+    description: "Image Name"
+    required: false
+  event_type:
+    description: "GitHub trigger event type"
+    required: false
+runs:
+  using: composite
+  steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - run: curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+      shell: bash
+      if: ${{ github.event.inputs.install }} == 'true'
+    - run: execute_action.sh ${{ inputs.bot-name }} ${{ inputs.path }} ${{ inputs.image }} ${{ inputs.event_type }}
+      shell: bash
