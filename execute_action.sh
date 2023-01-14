@@ -1,9 +1,10 @@
 #!/bin/bash
 
-BOT_NAME=$1
-PATH=$2
-IMG=$3
-EVENT_TYPE=$4
+INSTALL=$1
+BOT_NAME=$2
+PATH=$3
+IMG=$4
+EVENT_TYPE=$5
 
 function kustomize_set_image {
     git config --global user.name "${BOT_NAME}"
@@ -14,6 +15,9 @@ function kustomize_set_image {
     git commit -m "Image updated"
     git push
 }
+
+if [[ ${INSTALL} -eq 'true' ]]
+    curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 kustomize_set_image
 
