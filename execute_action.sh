@@ -16,7 +16,7 @@ function kustomize_set_image {
     git push
 }
 
-if [[ ${INSTALL} -eq 'true' ]]
+if [[ ${INSTALL} -eq 'true' ]]; then
     curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 fi
 kustomize_set_image
