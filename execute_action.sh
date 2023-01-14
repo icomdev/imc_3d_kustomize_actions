@@ -15,10 +15,12 @@ function kustomize_set_image {
     git push
 }
 
-if test "$#" -ne 4; then
-    echo "Invalid number of Arguments, plesase specify the correct number of arguments"
-    echo "Please refer https://github.com/arunalakmal/kustomize_actions#readme for more information."
-    exit 1
-else
-    kustomize_set_image
-fi
+kustomize_set_image
+
+# if test "$#" -ne 1; then
+#     echo "Invalid number of Arguments, plesase specify the correct number of arguments"
+#     echo "Please refer https://github.com/arunalakmal/kustomize_actions#readme for more information."
+#     exit 1
+# else
+#     kustomize_set_image
+# fi
