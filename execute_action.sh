@@ -11,6 +11,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$(pwd)
 function kustomize_set_image {
     git config --global user.name "${BOT_NAME}"
     git config --global user.email "${BOT_NAME}@email.com"
+    git pull
     pushd ${FOLDER_PATH}
     kustomize edit set image ${IMG}:${EVENT_TYPE}
     popd
