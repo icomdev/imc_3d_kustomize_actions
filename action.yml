@@ -1,25 +1,25 @@
 name: "Kustomize actions for GitHub workflows"
 description: "Kustomize actions Kubernetes deployments"
 inputs:
-  install:
-   description: "Kustomize installation requirement"
-   required: true
   bot-name: 
     description: "GitHub Auto Commit Name"
-    required: false
+    required: true
   path:
     description: "Kustomize folder path"
-    required: false
+    required: true
   image:
     description: "Image Name"
-    required: false
+    required: true
   event_type:
     description: "GitHub trigger event type"
-    required: false
+    required: true
+  version:
+    description: "Kustomize version"
+    required: true
 runs:
   using: composite
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: execute_action.sh ${{ inputs.install }} ${{ inputs.bot-name }} ${{ inputs.path }} ${{ inputs.image }} ${{ inputs.event_type }}
+    - run: execute_action.sh ${{ inputs.bot-name }} ${{ inputs.path }} ${{ inputs.image }} ${{ inputs.event_type }} ${{ inputs.version }}
       shell: bash
