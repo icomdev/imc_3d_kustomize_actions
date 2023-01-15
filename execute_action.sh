@@ -47,7 +47,7 @@ function setup_kustomize {
     fi
 
     curl -sLO "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${VERSION}/kustomize_${VERSION}_${OPSYS}_${ARCH}.tar.gz"
-    tar xzf ./kustomize_v*_${opsys}_${arch}.tar.gz
+    tar xzf ./kustomize_v*_${OPSYS}_${ARCH}.tar.gz
     $(pwd)/kustomize
 }
 
