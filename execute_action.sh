@@ -3,7 +3,7 @@
 BOT_NAME=$1
 FOLDER_PATH=$2
 IMG=$3
-EVENT_TYPE=$4
+TAG=$4
 VERSION=$5   #v4.5.7
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$(pwd)
@@ -13,7 +13,7 @@ function kustomize_set_image {
     git config --global user.email "${BOT_NAME}@email.com"
     git pull
     pushd ${FOLDER_PATH}
-    kustomize edit set image ${IMG}:${EVENT_TYPE}
+    kustomize edit set image ${IMG}:${TAG}
     popd
     git add .
     git commit -m "Image updated"

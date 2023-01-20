@@ -10,8 +10,8 @@ inputs:
   image:
     description: "Image Name"
     required: true
-  event_type:
-    description: "GitHub trigger event type"
+  tag:
+    description: "Image Tag"
     required: true
   version:
     description: "Kustomize version"
@@ -21,5 +21,5 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: execute_action.sh ${{ inputs.bot_name }} ${{ inputs.path }} ${{ inputs.image }} ${{ inputs.event_type }} ${{ inputs.version }}
+    - run: execute_action.sh ${{ inputs.bot_name }} ${{ inputs.path }} ${{ inputs.image }} ${{ inputs.tag }} ${{ inputs.version }}
       shell: bash
